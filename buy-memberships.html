@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Buy Memberships and Diamonds</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="advanced-search.html">Advanced Search</a></li>
+                <li><a href="buy-memberships.html">Buy Memberships</a></li>
+            </ul>
+        </nav>
+        <h1>Buy Memberships and Diamonds</h1>
+    </header>
+    <section class="purchase-options">
+        <div class="membership">
+            <h2>Memberships</h2>
+            <ul>
+                <li>Basic Membership - $9.99/month</li>
+                <li>Premium Membership - $19.99/month</li>
+                <li>VIP Membership - $29.99/month</li>
+            </ul>
+            <button class="buy-button" onclick="buyMembership('basic')">Buy</button>
+            <button class="buy-button" onclick="buyMembership('premium')">Buy</button>
+            <button class="buy-button" onclick="buyMembership('vip')">Buy</button>
+        </div>
+        <div class="diamonds">
+            <h2>Diamonds</h2>
+            <ul>
+                <li>100 Diamonds - $9.99</li>
+                <li>500 Diamonds - $39.99</li>
+                <li>1000 Diamonds - $69.99</li>
+            </ul>
+            <p class="diamond-count">Available Diamonds: <span id="available-diamonds">0</span></p>
+            <button class="buy-button" onclick="buyDiamonds(100)">Buy</button>
+            <button class="buy-button" onclick="buyDiamonds(500)">Buy</button>
+            <button class="buy-button" onclick="buyDiamonds(1000)">Buy</button>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2023 Dating Site. All rights reserved.</p>
+    </footer>
+    <script>
+        let availableDiamonds = 500;
+
+        function buyDiamonds(amount) {
+            if (availableDiamonds >= amount) {
+                availableDiamonds -= amount;
+                updateDiamondCount();
+                alert(`You successfully bought ${amount} diamonds!`);
+            } else {
+                alert("Insufficient diamonds.");
+            }
+        }
+
+        function updateDiamondCount() {
+            const diamondCountElement = document.getElementById("available-diamonds");
+            diamondCountElement.textContent = availableDiamonds;
+        }
+
+        function buyMembership(membershipType) {
+            // Add logic to handle membership purchase
+            alert(`You successfully bought ${membershipType} membership!`);
+        }
+
+        updateDiamondCount();
+    </script>
+</body>
+</html>

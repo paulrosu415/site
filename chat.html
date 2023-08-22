@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chat Page</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <script src="chat.js"></script> <!-- Adăugați această linie -->
+    </head>
+</head>
+<body>
+    <h1>Chat Page</h1>
+    <div id="chat-container">
+        <!-- Aici vor fi afișate mesajele -->
+    </div>
+    <form id="message-form">
+        <input type="text" id="message-input" placeholder="Type a message...">
+        <button type="submit">Send</button>
+    </form>
+    <div id="chat-container">
+        <div id="user-list">
+            <h2>Users</h2>
+            <ul id="users"></ul>
+        </div>
+        
+        <div id="chat">
+            <h2>Chat</h2>
+            <div id="messages"></div>
+            <input type="text" id="message-input" placeholder="Type your message...">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const usersList = $('#users');
+            const messagesDiv = $('#messages');
+            const messageInput = $('#message-input');
+            const sendButton = $('#send-button');
+            
+            $.get('/get_users', function(users) {
+                users.forEach(user => {
+                    const userItem = $('<li>').text(user);
+                    usersList.append(userItem);
+                    
+                    userItem.click(function() {
+                        messagesDiv.empty();
+                        $.get('/get_messages', { user1: 'User1', user2: user }, function(messages) {
+                            messages.forEach(message => {
+                                const msgDiv = $('<div>').text(`${message.from_user}: ${message.text}`);
+                                messagesDiv.append(msgDiv);
+                            });
+                        });
+                    });
+                });
+            });
+            
+            sendButton.click(function() {
+                const message = messageInput.val();
+                if (message.trim() !== '') {
+                    messagesDiv.append(`<div>You: ${message}</div>`);
+                    $.post('/send_message', {
+                        from_user: 'User1',
+                        to_user: 'User2',
+                        text: message
+                    }, function(data) {
+                        console.log(data.message);
+                    });
+                    messageInput.val('');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

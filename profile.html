@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completare Profil</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="profile-container">
+        <h2>Completare Profil</h2>
+        <form action="/save_profile" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="user_id" value="{{ user.id }}">
+            
+            <label for="age">Varsta:</label>
+            <input type="number" id="age" name="age" required><br>
+            
+            <label for="eye_color">Culoare Ochi:</label>
+            <input type="text" id="eye_color" name="eye_color" required><br>
+            
+            <label for="height">Inaltime:</label>
+            <input type="text" id="height" name="height" required><br>
+            
+            <label for="weight">Greutate:</label>
+            <input type="number" id="weight" name="weight" required><br>
+            
+            <label for="photo">Încarcă Fotografie:</label>
+<input type="file" id="photo" name="photo" accept="image/*" required><br>
+
+            
+            <label for="vices">Vicii:</label>
+            <input type="text" id="vices" name="vices"><br>
+            
+            <label for="hobbies">Pasiuni:</label>
+            <input type="text" id="hobbies" name="hobbies"><br>
+            
+            <button type="submit">Salveaza Profil</button>
+        </form>
+    </div>
+</body>
+</html>

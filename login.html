@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Login and Registration</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="advanced-search.html">Advanced Search</a></li>
+                <li><a href="buy-memberships.html">Buy Memberships</a></li>
+            </ul>
+        </nav>
+        <h1>Login or Register</h1>
+    </header>
+    <section class="auth-form">
+        <div class="login-form">
+            <h2>Login</h2>
+            <form action="/login" method="post">
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" name="email" required>
+
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" name="password" required>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <div class="register-form">
+            <h2>Register</h2>
+            <form action="/register" method="post">
+                <label for="register-username">Username:</label>
+                <input type="text" id="register-username" name="username" required>
+
+                <label for="register-email">Email:</label>
+                <input type="email" id="register-email" name="email" required>
+
+                <label for="register-password">Password:</label>
+                <input type="password" id="register-password" name="password" required>
+
+                <label for="register-age">Age:</label>
+                <input type="number" id="register-age" name="age" required>
+
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2023 Dating Site. All rights reserved.</p>
+    </footer>
+</body>
+</html>
